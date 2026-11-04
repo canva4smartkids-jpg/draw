@@ -1,0 +1,21 @@
+{
+  "name": "draw-cdr",
+  "version": "0.1.0",
+  "description": "Independent reader for CorelDRAW (.cdr) files: container + RIFF chunk decoding, document model and SVG export",
+  "type": "module",
+  "bin": {
+    "cdr2svg": "bin/cdr2svg.js"
+  },
+  "exports": {
+    ".": "./src/index.js"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "test": "node --test test/*.test.js",
+    "fixtures": "sh scripts/fetch-fixtures.sh",
+    "serve": "node scripts/serve.js"
+  },
+  "private": true
+}
