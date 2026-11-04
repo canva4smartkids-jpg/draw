@@ -1,0 +1,7 @@
+node_modules/
+coverage/
+dist/
+fixtures/
+package-lock.json
+**/test/golden/
+*.md

@@ -1,7 +1,11 @@
 # Draw: architecture and feasibility proposal
 
-Status: **proposal for review**. No application code is written until this
-document is accepted. Decisions that need an owner are collected in §7.
+Status: **accepted in part (2026-11-04).**
+- Electron (ADR 0002) and React (ADR 0003) are approved.
+- Phase 0 is implemented; see ADRs 0004–0006 and the README.
+- The remaining open decisions are in §7.
+
+§1 describes the repository as it was **before** Phase 0.
 
 Working names used below:
 - **Draw** for the application.
@@ -1025,9 +1029,8 @@ Nothing is discarded:
 
 1. **Licence** for the project. Proprietary or open source; this affects
    which dependencies are acceptable.
-2. **Electron** as the shell (recommended), or a requirement that forces
-   Tauri.
-3. **UI framework:** React (recommended), Preact or Solid.
+2. ~~**Electron** as the shell~~: **decided, Electron** (ADR 0002).
+3. ~~**UI framework**~~: **decided, React** (ADR 0003).
 4. **Artboard model:** multiple artboards in one world (recommended), or
    CorelDRAW-style pages viewed one at a time.
 5. **Product name and file extension** (`.drawx` is a placeholder).

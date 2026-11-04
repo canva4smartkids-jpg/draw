@@ -1,0 +1,398 @@
+{
+  "format": {
+    "container": "zip-riffData",
+    "version": 1500,
+    "product": "CorelDRAW X5",
+    "precision": 32,
+    "units": "mm",
+    "coordinateSystem": "page-centre-y-up",
+    "stackingOrder": "top-first"
+  },
+  "pageSize": {
+    "width": 200,
+    "height": 100,
+    "fromFile": true
+  },
+  "pages": [
+    {
+      "index": 0,
+      "flags": 2415984640,
+      "master": true,
+      "width": 200,
+      "height": 100,
+      "layers": [
+        {
+          "flags": 2550202378,
+          "master": true,
+          "kind": null,
+          "name": "Guides",
+          "objects": []
+        }
+      ]
+    },
+    {
+      "index": 1,
+      "flags": 2415919168,
+      "master": false,
+      "width": 200,
+      "height": 100,
+      "layers": [
+        {
+          "flags": 2550136832,
+          "master": false,
+          "kind": null,
+          "name": "Layer 1",
+          "objects": [
+            {
+              "kind": "curve",
+              "id": 3,
+              "transform": [
+                1,
+                0,
+                -50,
+                0,
+                1,
+                -50
+              ],
+              "path": [
+                {
+                  "op": "M",
+                  "x": -50,
+                  "y": -50
+                },
+                {
+                  "op": "L",
+                  "x": -40,
+                  "y": -50
+                },
+                {
+                  "op": "L",
+                  "x": -45,
+                  "y": -42
+                },
+                {
+                  "op": "Z"
+                }
+              ],
+              "fill": {
+                "id": "0x00000030",
+                "type": "solid",
+                "typeCode": 1,
+                "color": {
+                  "model": "cmyk100",
+                  "modelCode": 2,
+                  "palette": 0,
+                  "value": "0x64000000",
+                  "rgb": [
+                    0,
+                    0,
+                    0
+                  ]
+                }
+              },
+              "outline": null,
+              "lens": null,
+              "bbox": null,
+              "geometry": {
+                "type": "points",
+                "points": [
+                  [
+                    0,
+                    0
+                  ],
+                  [
+                    10,
+                    0
+                  ],
+                  [
+                    5,
+                    8
+                  ]
+                ],
+                "nodeTypes": [
+                  0,
+                  64,
+                  72
+                ]
+              },
+              "styleId": null,
+              "fillSource": "object",
+              "outlineSource": null
+            },
+            {
+              "kind": "ellipse",
+              "id": 2,
+              "transform": [
+                1,
+                0,
+                10,
+                0,
+                1,
+                10
+              ],
+              "path": [
+                {
+                  "op": "M",
+                  "x": 50,
+                  "y": 20
+                },
+                {
+                  "op": "C",
+                  "x1": 50,
+                  "y1": 14.477152501692068,
+                  "x2": 41.045694996615865,
+                  "y2": 10,
+                  "x": 30,
+                  "y": 10
+                },
+                {
+                  "op": "C",
+                  "x1": 18.954305003384135,
+                  "y1": 10,
+                  "x2": 10.000000000000004,
+                  "y2": 14.477152501692066,
+                  "x": 10,
+                  "y": 20
+                },
+                {
+                  "op": "C",
+                  "x1": 10,
+                  "y1": 25.522847498307932,
+                  "x2": 18.95430500338413,
+                  "y2": 30,
+                  "x": 29.999999999999996,
+                  "y": 30
+                },
+                {
+                  "op": "C",
+                  "x1": 41.045694996615865,
+                  "y1": 30,
+                  "x2": 50,
+                  "y2": 25.522847498307936,
+                  "x": 50,
+                  "y": 20
+                },
+                {
+                  "op": "Z"
+                }
+              ],
+              "fill": {
+                "id": "0x00000020",
+                "type": "solid",
+                "typeCode": 1,
+                "color": {
+                  "model": "rgb",
+                  "modelCode": 5,
+                  "palette": 5,
+                  "value": "0x000000ff",
+                  "rgb": [
+                    0,
+                    0,
+                    255
+                  ]
+                }
+              },
+              "outline": {
+                "id": "0x00000100",
+                "flags": 2,
+                "none": false,
+                "dashed": false,
+                "scaleWithObject": false,
+                "caps": "round",
+                "join": "round",
+                "width": 0.5,
+                "stretch": 1,
+                "angle": 0,
+                "color": {
+                  "model": "rgb",
+                  "modelCode": 5,
+                  "palette": 5,
+                  "value": "0x00008000",
+                  "rgb": [
+                    0,
+                    128,
+                    0
+                  ]
+                },
+                "dashes": []
+              },
+              "lens": null,
+              "bbox": null,
+              "geometry": {
+                "type": "ellipse",
+                "width": 40,
+                "height": 20,
+                "startAngle": 0,
+                "endAngle": 0,
+                "pie": false
+              },
+              "styleId": null,
+              "fillSource": "object",
+              "outlineSource": "object"
+            },
+            {
+              "kind": "rectangle",
+              "id": 1,
+              "transform": [
+                1,
+                0,
+                -30,
+                0,
+                1,
+                15
+              ],
+              "path": [
+                {
+                  "op": "M",
+                  "x": -30,
+                  "y": 15
+                },
+                {
+                  "op": "L",
+                  "x": -30,
+                  "y": -15
+                },
+                {
+                  "op": "L",
+                  "x": 30,
+                  "y": -15
+                },
+                {
+                  "op": "L",
+                  "x": 30,
+                  "y": 15
+                },
+                {
+                  "op": "Z"
+                }
+              ],
+              "fill": {
+                "id": "0x00000010",
+                "type": "solid",
+                "typeCode": 1,
+                "color": {
+                  "model": "rgb",
+                  "modelCode": 5,
+                  "palette": 5,
+                  "value": "0x00ff0000",
+                  "rgb": [
+                    255,
+                    0,
+                    0
+                  ]
+                }
+              },
+              "outline": null,
+              "lens": null,
+              "bbox": null,
+              "geometry": {
+                "type": "rectangle",
+                "width": 60,
+                "height": -30,
+                "scaleX": 1,
+                "scaleY": 1,
+                "cornerType": "round",
+                "radii": [
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              },
+              "styleId": null,
+              "fillSource": "object",
+              "outlineSource": null
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "fills": {
+    "0x00000010": {
+      "id": "0x00000010",
+      "type": "solid",
+      "typeCode": 1,
+      "color": {
+        "model": "rgb",
+        "modelCode": 5,
+        "palette": 5,
+        "value": "0x00ff0000",
+        "rgb": [
+          255,
+          0,
+          0
+        ]
+      }
+    },
+    "0x00000020": {
+      "id": "0x00000020",
+      "type": "solid",
+      "typeCode": 1,
+      "color": {
+        "model": "rgb",
+        "modelCode": 5,
+        "palette": 5,
+        "value": "0x000000ff",
+        "rgb": [
+          0,
+          0,
+          255
+        ]
+      }
+    },
+    "0x00000030": {
+      "id": "0x00000030",
+      "type": "solid",
+      "typeCode": 1,
+      "color": {
+        "model": "cmyk100",
+        "modelCode": 2,
+        "palette": 0,
+        "value": "0x64000000",
+        "rgb": [
+          0,
+          0,
+          0
+        ]
+      }
+    }
+  },
+  "outlines": {
+    "0x00000100": {
+      "id": "0x00000100",
+      "flags": 2,
+      "none": false,
+      "dashed": false,
+      "scaleWithObject": false,
+      "caps": "round",
+      "join": "round",
+      "width": 0.5,
+      "stretch": 1,
+      "angle": 0,
+      "color": {
+        "model": "rgb",
+        "modelCode": 5,
+        "palette": 5,
+        "value": "0x00008000",
+        "rgb": [
+          0,
+          128,
+          0
+        ]
+      },
+      "dashes": []
+    }
+  },
+  "styles": {},
+  "fonts": {},
+  "metadata": {
+    "ProductName": "Synthetic",
+    "Author": "test"
+  },
+  "packageEntries": [
+    "content/riffData.cdr",
+    "metadata/metadata.xml"
+  ],
+  "warnings": []
+}

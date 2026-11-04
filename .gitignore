@@ -1,3 +1,6 @@
 node_modules/
-test/fixtures/external/
+coverage/
+dist/
+fixtures/external/
 *.log
+.DS_Store

@@ -1,0 +1,45 @@
+name: CI
+
+on:
+  push:
+    branches: [main, 'claude/**']
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    name: check (${{ matrix.os }}, Node ${{ matrix.node }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        node: ['22', '24']
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: ${{ matrix.node }}
+          cache: npm
+
+      - name: Install
+        run: npm ci
+
+      # Real CorelDRAW files from LibreOffice's test data, hash-verified.
+      # Without them the real-file tests skip instead of failing.
+      - name: Fetch real-file fixtures
+        run: npm run fixtures
+
+      - name: Typecheck, lint, format, boundaries, tests
+        run: npm run check
+
+      - name: Coverage summary
+        if: matrix.os == 'ubuntu-latest' && matrix.node == '22'
+        run: npm run coverage

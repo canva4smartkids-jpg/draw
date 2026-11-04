@@ -1,91 +1,92 @@
-# draw: an open CorelDRAW (`.cdr`) reader
+# Draw
 
-A zero-dependency JavaScript reader for CorelDRAW drawings. It decodes the
-container, the RIFF record tree and the drawing model (pages, layers,
-objects, fills, outlines, styles), then renders the result to SVG. The same
-modules run in Node.js (≥ 20) and in the browser.
+An independent desktop vector graphics editor. It will have its own document
+format, editing engine, renderer and Electron/React desktop interface. CDR,
+SVG and PDF are import/export formats, never the native one.
 
-The format knowledge came from reverse-engineering real CorelDRAW output
-with [REA](https://github.com/morluto/rea) and byte-level analysis, checked
-against the metadata and thumbnails CorelDRAW embeds in its own files. See:
+**Status:** roadmap **Phase 0 (foundation) is complete**. The repository is a
+strict-TypeScript monorepo containing the experimental CorelDRAW importer,
+developer tools and the enforcement scaffolding later phases build on. There
+is no desktop application yet; it arrives in Phase 2.
 
-- [`docs/cdr-format.md`](docs/cdr-format.md): the format, field by field,
-  with confidence levels
-- [`docs/rea-analysis.md`](docs/rea-analysis.md): the REA workflow and the
-  evidence behind each finding
+- [Architecture proposal and roadmap](docs/architecture/proposal.md)
+- [Architecture decision records](docs/architecture/adr/)
+- [CorelDRAW format notes](docs/formats/cdr-format.md) and
+  [how they were reverse-engineered](docs/formats/rea-analysis.md)
 
-## Quick start
+## Requirements
 
-```bash
-node bin/cdr2svg.js drawing.cdr              # writes drawing.svg
-node bin/cdr2svg.js drawing.cdr --info       # summary
-node bin/cdr2svg.js drawing.cdr --json       # full decoded model
-node bin/cdr2svg.js drawing.cdr --tree       # raw RIFF chunk tree
-```
+- Node.js **22.18 or later** (runs TypeScript directly; see ADR 0004)
+- git (only for `npm run fixtures`)
 
-Browser viewer (drag and drop; files never leave the page):
+## Commands
 
 ```bash
-node scripts/serve.js 8080    # then open http://127.0.0.1:8080/
+npm ci                 # install (dev tooling only; no runtime dependencies)
+npm run check          # typecheck + lint + format check + boundary rules + tests
+npm test               # tests only (Vitest)
+npm run coverage       # tests with V8 coverage
+npm run fixtures       # fetch real CorelDRAW test files (hash-verified, not committed)
+npm run format         # apply Prettier
 ```
 
-Library:
-
-```js
-import { readCdr, toSvg } from './src/index.js';
-
-const doc = await readCdr(bytes);   // Uint8Array
-doc.format;                         // { version: 1500, product: 'CorelDRAW X5', container: 'zip-riffData', … }
-doc.pages[1].layers[3].objects[0];  // { kind: 'rectangle', path, transform, fill, outline, lens, … }
-const svg = toSvg(doc);
-```
-
-All lengths in the model are millimetres in CorelDRAW page space: origin at
-the page centre, y axis up. Objects are listed top-most first, as stored in
-the file.
-
-## What works
-
-| Feature | Status |
-| --- | --- |
-| Containers: bare RIFF (v3–X3), ZIP + `riffData.cdr` (X4–X5) | ✅ X5 verified on real output |
-| ZIP + `root.dat` with out-of-line data streams (X6+) | ⚠️ implemented, no sample yet |
-| Compressed `cmpr` record streams | ✅ |
-| Pages, master page, layers and layer names | ✅ |
-| Rectangles (incl. rounded/scallop/chamfer corners), ellipses, arcs, pies, curves, paths | ✅ rectangles verified; others built from documented layouts |
-| Polygons and stars | ⚠️ unverified |
-| Object transforms | ✅ |
-| Solid fills, all common colour models | ✅ |
-| Linear and radial gradients | ⚠️ approximate |
-| Outlines: width, colour, caps, joins, dashes | ✅ |
-| Style table (`stlt`) with inherited fills/outlines | ✅ verified |
-| Invert lens | ✅ verified against CorelDRAW's thumbnail |
-| Text, bitmaps, pattern/texture fills, PowerClip, envelopes | ❌ reported as warnings |
-| CMX files | ❌ identified and refused |
-
-## Tests
+Developer tools:
 
 ```bash
-npm test             # synthetic files built in test/helpers/build.js
-npm run fixtures     # fetch real CorelDRAW files from LibreOffice's test data
-npm test             # now also runs test/real-files.test.js
+npm run cdr2svg -- drawing.cdr              # writes drawing.svg
+npm run cdr2svg -- drawing.cdr --info       # summary
+npm run cdr2svg -- drawing.cdr --json       # decoded import model
+npm run cdr2svg -- drawing.cdr --tree       # raw RIFF chunk tree
+npm run viewer                              # CDR debug viewer in the browser (Vite)
 ```
 
-The real-file regression checks the CorelDRAW X5 drawing:
+## Repository layout
 
-- five rectangles under an invert lens
-- every fill colour against the document palette
-- outlines inherited through the style table
-- the lens transform
+```
+packages/
+  archive/    binary reader, inflate, ZIP reading (platform-neutral)
+  io-cdr/     CorelDRAW importer: RIFF/cmpr decoding, import model, SVG preview
+  testkit/    test-only builders (synthetic CDR/ZIP files) and fixture access
+tools/        cdr2svg CLI, fixture fetcher, boundary checker, debug viewer
+docs/         architecture proposal, ADRs, format notes
+fixtures/     real-file test fixtures (fetched, git-ignored)
+```
 
-Without the fixtures those tests are skipped, not failed.
+Packages planned in the proposal (geometry, color, document, render, editor,
+format-native, io-svg, io-pdf, io-raster) and `apps/desktop` already have
+entries in the boundary rules (`tools/boundaries.ts`).
 
-## Scope and credits
+## Engineering rules
 
-This project reads files that CorelDRAW produces so they can be opened
-elsewhere (interoperability). It contains no CorelDRAW code or assets, and no
-CorelDRAW program was disassembled.
-[libcdr](https://github.com/LibreOffice/libcdr) (Document Liberation Project,
-MPL-2.0) was used as a reference for record layouts the samples did not
-cover. The implementation here is independent. CorelDRAW is a trademark of
-its owner, and this project is not affiliated with it.
+- **Strict TypeScript everywhere.** Library code is platform-neutral: no DOM,
+  no Node built-ins. This is enforced by a separate typecheck pass and by
+  `npm run boundaries`.
+- **Layering is enforced.** Lower layers never import higher ones. Only the
+  Electron main and preload code may import `electron` (ADR 0005).
+- **No dependency without an ADR.** There are zero runtime dependencies
+  today.
+- **CDR import output is pinned by golden files.** An intentional change
+  updates `packages/io-cdr/test/golden/` in the same commit (ADR 0006).
+
+## CorelDRAW import: support level
+
+Experimental. It is **verified against real CorelDRAW X5 (version 1500)
+output only**:
+- rectangles;
+- solid RGB/CMYK fills;
+- outlines and styles inherited through the style table;
+- layers;
+- the invert lens.
+
+Other versions, groups, polygons and gradients are implemented from
+documented layouts and are untested. Text, bitmaps, pattern fills, PowerClip
+and CMX are not supported. See `docs/formats/cdr-format.md` for every field's
+confidence level.
+
+## Licence and credits
+
+The project licence has **not been chosen yet** (see proposal §7).
+
+No CorelDRAW code or assets are used. libcdr (Document Liberation Project,
+MPL-2.0) served as a reference for format details only. CorelDRAW is a
+trademark of its owner; this project is not affiliated with it.

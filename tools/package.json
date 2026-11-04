@@ -1,0 +1,18 @@
+{
+  "name": "@draw/tools",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Developer tools: cdr2svg, fixture fetcher, boundary checker, debug viewer",
+  "scripts": {
+    "typecheck": "tsc -p tsconfig.json"
+  },
+  "dependencies": {
+    "@draw/archive": "0.0.0",
+    "@draw/io-cdr": "0.0.0",
+    "@draw/testkit": "0.0.0"
+  },
+  "devDependencies": {
+    "typescript": "6.0.3"
+  }
+}

@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CDR Debug Viewer</title>
+    <style>
+      :root {
+        --bg: #f6f6f4;
+        --fg: #1d1d1b;
+        --muted: #6b6b66;
+        --card: #ffffff;
+        --line: #deded8;
+        --accent: #2f6fdb;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #161615;
+          --fg: #ececea;
+          --muted: #a3a39e;
+          --card: #20201f;
+          --line: #353533;
+          --accent: #7aa7ff;
+        }
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        font:
+          15px/1.5 system-ui,
+          sans-serif;
+        background: var(--bg);
+        color: var(--fg);
+      }
+      main {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 24px 16px 64px;
+      }
+      h1 {
+        font-size: 22px;
+        margin: 0 0 4px;
+      }
+      p.lead {
+        margin: 0 0 20px;
+        color: var(--muted);
+      }
+      #drop {
+        display: block;
+        border: 2px dashed var(--line);
+        border-radius: 12px;
+        padding: 28px;
+        text-align: center;
+        background: var(--card);
+        cursor: pointer;
+      }
+      #drop.over {
+        border-color: var(--accent);
+      }
+      #out {
+        display: grid;
+        grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+        gap: 16px;
+        margin-top: 20px;
+      }
+      @media (max-width: 760px) {
+        #out {
+          grid-template-columns: 1fr;
+        }
+      }
+      .card {
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        padding: 16px;
+        min-width: 0;
+      }
+      #canvas svg {
+        width: 100%;
+        height: auto;
+        display: block;
+        box-shadow: 0 1px 6px rgba(0, 0, 0, 0.15);
+        background: #fff;
+      }
+      dl {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: 4px 12px;
+        margin: 0;
+      }
+      dt {
+        color: var(--muted);
+      }
+      dd {
+        margin: 0;
+        overflow-wrap: anywhere;
+      }
+      pre {
+        font-size: 12px;
+        overflow: auto;
+        max-height: 360px;
+        background: var(--bg);
+        padding: 8px;
+        border-radius: 8px;
+      }
+      .warn {
+        color: #b26b00;
+      }
+      .err {
+        color: #c62828;
+      }
+      button {
+        font: inherit;
+        border: 1px solid var(--line);
+        background: var(--card);
+        color: var(--fg);
+        border-radius: 8px;
+        padding: 6px 12px;
+        cursor: pointer;
+      }
+      [hidden] {
+        display: none !important;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>CDR Debug Viewer</h1>
+      <p class="lead">
+        Developer tool for the CDR importer. Open a CorelDRAW <code>.cdr</code> file; everything runs in this page and
+        nothing is uploaded.
+      </p>
+      <label id="drop"
+        >Drop a .cdr file here or click to choose one
+        <input id="file" type="file" accept=".cdr,.cdt,.cmx" hidden />
+      </label>
+      <p id="status"></p>
+      <section id="out" hidden>
+        <div class="card">
+          <div id="canvas"></div>
+          <p><button id="save">Download SVG</button></p>
+        </div>
+        <div class="card">
+          <dl id="facts"></dl>
+          <h3>Warnings</h3>
+          <ul id="warnings"></ul>
+          <h3>Chunk tree</h3>
+          <pre id="tree"></pre>
+        </div>
+      </section>
+    </main>
+    <script type="module" src="./main.ts"></script>
+  </body>
+</html>

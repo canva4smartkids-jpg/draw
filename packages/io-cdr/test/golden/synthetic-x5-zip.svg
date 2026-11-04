@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="200mm" height="100mm" viewBox="0 0 200 100">
+<title>CorelDRAW X5 drawing</title>
+<desc>Converted from CorelDRAW X5 (version 1500) by draw-cdr</desc>
+<g style="isolation:isolate">
+<rect data-cdr-paper="1" width="200" height="100" fill="#ffffff"/>
+<g data-layer="Layer 1">
+<path d="M70 35L70 65L130 65L130 35Z" data-cdr-id="1" data-kind="rectangle" fill="#ff0000"/>
+<path d="M150 30C150 35.523 141.046 40 130 40C118.954 40 110 35.523 110 30C110 24.477 118.954 20 130 20C141.046 20 150 24.477 150 30Z" data-cdr-id="2" data-kind="ellipse" fill="#0000ff" stroke="#008000" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M50 100L60 100L55 92Z" data-cdr-id="3" data-kind="curve" fill="#000000"/>
+</g>
+</g>
+</svg>

@@ -1,0 +1,4 @@
+* text=auto eol=lf
+*.cdr binary
+*.cmx binary
+*.png binary

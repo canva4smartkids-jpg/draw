@@ -1,0 +1,46 @@
+RIFF 'CDRF' 634
+  vrsn 2 dc05
+  LIST 'cmpr' 612
+    LIST 'doc ' 405 (cmpr)
+      mcfg 84 00000000000000000000000080841e00…
+      LIST 'filt' 145 (cmpr)
+        fild 39 10000000000000000000000001000000…
+        fild 39 20000000000000000000000001000000…
+        fild 39 30000000000000000000000001000000…
+      LIST 'otlt' 148 (cmpr)
+        outl 136 00010000010000000000000002000100…
+    LIST 'page' 114 (cmpr)
+      flgs 4 00000190
+      LIST 'gobj' 90 (cmpr)
+        LIST 'layr' 78 (cmpr)
+          flgs 4 0a000198
+          LIST 'lgob' 54 (cmpr)
+            loda 42 2a000000010000002200000026000000…
+    LIST 'page' 887 (cmpr)
+      flgs 4 40000090
+      LIST 'gobj' 863 (cmpr)
+        LIST 'layr' 851 (cmpr)
+          flgs 4 00000098
+          LIST 'lgob' 56 (cmpr)
+            loda 44 2c000000010000002400000028000000…
+          LIST 'obj ' 219 (cmpr)
+            flgs 4 00020008
+            usdn 4 03000000
+            LIST 'lgob' 183 (cmpr)
+              loda 71 4700000002000000370000003f000000…
+              LIST 'trfl' 92 (cmpr)
+                trfd 80 50000000010000004c00000000000000…
+          LIST 'obj ' 220 (cmpr)
+            flgs 4 00020008
+            usdn 4 02000000
+            LIST 'lgob' 184 (cmpr)
+              loda 72 4800000003000000300000003c000000…
+              LIST 'trfl' 92 (cmpr)
+                trfd 80 50000000010000004c00000000000000…
+          LIST 'obj ' 308 (cmpr)
+            flgs 4 00020008
+            usdn 4 01000000
+            LIST 'lgob' 272 (cmpr)
+              loda 160 a0000000020000009000000098000000…
+              LIST 'trfl' 92 (cmpr)
+                trfd 80 50000000010000004c00000000000000…

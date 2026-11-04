@@ -1,0 +1,35 @@
+{
+  "synthetic": {
+    "synthetic-x5-zip": {
+      "input": "10fd1b097f143a4e457b9e3a8ec238b709c211aad903df4be5f050abbbba22b4",
+      "svg": "65536fc626c78c3fe6a8a8e9a9d6e917ff1e473133e49da5346d8b878455f48f",
+      "json": "058eb476832dbd984c0d2818205b2da261ef5d56be077ef60b4aeb1fd6e94cd8",
+      "tree": "2d56f752b938df4dffedb7653a8e97256adb1cc79e38640facde6722dcd8ae4a"
+    },
+    "synthetic-x5-riff": {
+      "input": "958462118667f2e44001c5aace7026cc6b9f69a94506fe2017f8c7c0f1274c37",
+      "svg": "65536fc626c78c3fe6a8a8e9a9d6e917ff1e473133e49da5346d8b878455f48f",
+      "json": "278dab04d9cd3b519c26ebfc62132adada4cb0ab8b774a6b71b487b818c1c03f",
+      "tree": "2d56f752b938df4dffedb7653a8e97256adb1cc79e38640facde6722dcd8ae4a"
+    }
+  },
+  "real": {
+    "fdo65220-2.cdr": {
+      "input": "88e62beb7a7ebe812f6ce06238017d07d215de9dbf76323dde93200f2d5dd348",
+      "svg": "e3cab2909198b083cc9a2bc415bdb5432a0aa7bb1372173a0acd58855b4e8054",
+      "json": "4091050c55e30e3cde8533ae218a1276ccdf70616a1e689a669b8e1f001207fc",
+      "tree": "2e19dbfce437564780773984059abf33efefb3b794c7275dbb3bdd873c3427be",
+      "info": "dbcdc92d6fce08d49b1ef7fd4fbd7b046a55bf03c51b4f4f839b11a30ec8f46a"
+    },
+    "EDB-35217-2.cdr": {
+      "input": "10bbe0e281b70ca7b95c2f134191e099419c7b3a6c5899cd9d3474a7081d42df",
+      "exitCode": 1,
+      "stderr": "cdr2svg: not a CorelDRAW file (no RIFF \"CDR\" header and no ZIP package)"
+    },
+    "fdo63782-1.cmx": {
+      "input": "14c29eedec0d6e2b2cc2588bdee9997d0875364a2e6b0cde7ee1ee4620493e80",
+      "exitCode": 1,
+      "stderr": "cdr2svg: this is a Corel Presentation Exchange (CMX) file, not a CDR drawing; CMX is not supported yet"
+    }
+  }
+}
